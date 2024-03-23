@@ -1,6 +1,8 @@
-import { httpGet } from './http';
+import httpGet from './http';
+
 export default function loadUser(id) {
-    // bad practice
-    const data = httpGet('http://server:8080/user/${id}');
-    return JSON.parse(data);
+  // bad practice
+  const str = `http://server:8080/user/\${${id}}`;
+  const data = httpGet(str);
+  return JSON.parse(data);
 }
